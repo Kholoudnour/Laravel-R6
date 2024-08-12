@@ -56,7 +56,7 @@ class CarController extends Controller
           
         // dd($request);
              $data['published'] = isset ($request->published);
-             $data['image']=$this->uploadFile($request->image, 'assets/images');
+             $data['image']=$this->uploadFile($request->image, 'assets/images/Car/');
              car::create($data);
                return "Data Added Successfuly";
             }        
@@ -96,7 +96,7 @@ class CarController extends Controller
       
     // dd($request);
          $data['published'] = isset ($request->published);
-         $data['image']=$this->uploadFile($request->image, 'assets/images');
+         $data['image']=$this->uploadFile($request->image, 'assets/images/car/');
          car::where('id', $id)->update($data);
            return "Data Added Successfuly";
     // $data = [

@@ -5,6 +5,8 @@ use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 
 Route::get('/', function () {
   return view('welcome');
@@ -189,3 +191,10 @@ Route::post('uploadform', [ExampleController::class, 'upload'])->name('uploadfor
 Route::get('index', [ExampleController::class, 'index']);
 Route::get('product/create', [ExampleController::class, 'create'])->name('product.create');
 Route::post('product', [ExampleController::class, 'store'])->name('product.store');
+Route::get('about', [ExampleController::class, 'about']);
+
+Route::get('index', [ProductController::class, 'index']);
+Route::get('product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('product', [ProductController::class, 'store'])->name('product.store');
+Route::get('about', [ProductController::class, 'about']);
+Route::get('product/edit', [ProductController::class, 'edit'])->name('product.edit');

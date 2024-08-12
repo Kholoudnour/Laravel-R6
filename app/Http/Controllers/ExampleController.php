@@ -23,6 +23,12 @@ class ExampleController extends Controller
 
     }
 
+    public function about()
+    {
+        return view('about');
+
+
+    }
     /**
      * Show the form for creating a new resource.
      */
