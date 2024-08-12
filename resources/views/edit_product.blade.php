@@ -30,7 +30,7 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Product Title:</label>
             <div class="col-md-10">
-              <input type="text" placeholder="classname" class="form-control py-2" name="title" value="{{old('title', $car->title)}}"/>
+              <input type="text" placeholder="classname" class="form-control py-2" name="title" value="{{old('title', $product->title)}}"/>
               @error ('carTitle')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
@@ -48,7 +48,7 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Description:</label>
             <div class="col-md-10">
-              <textarea id="" cols="30" rows="5" class="form-control py-2" name="description">{{old('description', $car->description)}}</textarea>
+              <textarea id="" cols="30" rows="5" class="form-control py-2" name="description">{{old('description', $product->description)}}</textarea>
               @error ('description')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
