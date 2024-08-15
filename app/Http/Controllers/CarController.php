@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\car;
 use App\trait\Commmon;
 use App\Trait\Common;
+use App\Models\Category;
+
 
 class CarController extends Controller
 {
@@ -31,7 +33,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('add_car');
+        $categories = Category::select('id', 'category_name')->get();
+        return view('add_car', compact('categories') );
     }
 
     /**
@@ -44,6 +47,7 @@ class CarController extends Controller
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric', 
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         
              ]);
         //      $file_extension = $request->image->getClientOriginalExtension();
@@ -56,6 +60,8 @@ class CarController extends Controller
           
         // dd($request);
              $data['published'] = isset ($request->published);
+            
+
              $data['image']=$this->uploadFile($request->image, 'assets/images/Car/');
              car::create($data);
                return "Data Added Successfuly";
@@ -76,8 +82,11 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
+        
         $car = Car::findOrFail($id);
-        return  view('edit_car', compact('car'));
+        $categories = Category::all(); // Get all categories
+        $categories = Category::select('id', 'category_name')->get();
+        return  view('edit_car', compact('car', 'categories'));
     }
 
     /**
@@ -91,6 +100,8 @@ class CarController extends Controller
         'carTitle' => 'required|string', 
         'description' => 'required|string|max:1000',
         'price' => 'required|numeric', 
+        'category_id' => 'required|exists:categories,id',
+
     
          ]);
       
@@ -98,6 +109,8 @@ class CarController extends Controller
          $data['published'] = isset ($request->published);
          $data['image']=$this->uploadFile($request->image, 'assets/images/car/');
          car::where('id', $id)->update($data);
+      
+
            return "Data Added Successfuly";
     // $data = [
         

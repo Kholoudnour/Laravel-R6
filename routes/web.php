@@ -197,4 +197,15 @@ Route::get('index', [ProductController::class, 'index']);
 Route::get('product/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('product', [ProductController::class, 'store'])->name('product.store');
 Route::get('about', [ProductController::class, 'about']);
-Route::get('product/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::get('product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+
+Route::get('testonetoone', [ExampleController::class, 'test']);
+Route::get('/download', function (Illuminate\Http\Request $request) {
+  // $file = $request->input('file');
+  // $path = public_path('assets/images/' . $file);
+  // if (file_exists($path)) {
+  //     return response()->download($path);
+  // } else {
+  //     abort(404, 'File not found');
+  // }
+});

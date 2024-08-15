@@ -35,6 +35,19 @@
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
+
+            <div 
+            class="form-group">
+              <label for="category_id">Category</label>
+              <select
+              name="category_id" id="category_id" class="form-control">
+                  @foreach($categories as $category) 
+              <option value="{{ $category->id }}"  {{ $car->category_id == $category->id ? 'selected' : '' }}>
+                          {{ $category->name }}
+                      </option>
+                  @endforeach
+              </select>
+    </div>
           </div>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Price:</label>

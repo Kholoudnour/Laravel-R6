@@ -70,7 +70,7 @@ class ProductController extends Controller
         $product = Product::findorfail($id);
 
 
-        return view('products.edit', compact('product'));  
+        return view('edit_product', compact('product'));  
       }
 
     /**
@@ -87,7 +87,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');    }
+        return redirect()->route('product.index')->with('success', 'Product updated successfully.');    }
 
     /**
      * Remove the specified resource from storage.

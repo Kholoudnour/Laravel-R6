@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->string('image');
+            $table->string('category_id')->constrained("categories");
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();
