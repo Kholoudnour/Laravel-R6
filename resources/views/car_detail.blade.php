@@ -49,6 +49,11 @@
                   <span class="fw-bold">Description:</span><br>{{$car['description']}}
                 </p>
               </div>
+              <div class="mb-4">
+                <p class="card-text">
+                  <span class="fw-bold">category_name:</span><br>{{$car->Category->category_name}}
+                </p>
+              </div>
               <div class="text-md-end">
                 <a href="{{route('cars.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
                   Back to All cars

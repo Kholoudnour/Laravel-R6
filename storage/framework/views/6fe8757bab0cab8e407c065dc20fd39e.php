@@ -31,6 +31,8 @@
               <th scope="col">Price</th>
               <th scope="col">Description</th>
               <th scope="col">Published</th>
+              <th scope="col">Category Name</th>
+
               <th scope="col">Edit</th>
               <th scope="col">Show</th>
               <th scope="col">Delete</th>
@@ -45,6 +47,8 @@
               <td><?php echo e($car['price']); ?></td>
               <td><?php echo e(Str::limit($car['description'],10)); ?></td>
               <td><?php echo e($car['published']=="1" ? "Yes": "NO"); ?></td>
+              <td><?php echo e($car->category->category_name); ?></td>
+
               <td><a href= "<?php echo e(route('cars.edit', $car['id'])); ?>">edit</a></td>
               <td><a href= "<?php echo e(route('cars.show', $car['id'])); ?>">Show</a></td>
               <td><a href= "<?php echo e(route('cars.destroy', $car['id'])); ?>" onclick=" return confirm('Are you sure you want to delete?')">Delete</a></td>

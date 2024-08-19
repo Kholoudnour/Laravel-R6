@@ -31,6 +31,8 @@
               <th scope="col">Price</th>
               <th scope="col">Description</th>
               <th scope="col">Published</th>
+              <th scope="col">Category Name</th>
+
               <th scope="col">Edit</th>
               <th scope="col">Show</th>
               <th scope="col">Delete</th>
@@ -45,6 +47,8 @@
               <td>{{$car['price']}}</td>
               <td>{{Str::limit($car['description'],10)}}</td>
               <td>{{$car['published']=="1" ? "Yes": "NO"}}</td>
+              <td>{{$car->category->category_name}}</td>
+
               <td><a href= "{{route('cars.edit', $car['id'])}}">edit</a></td>
               <td><a href= "{{route('cars.show', $car['id'])}}">Show</a></td>
               <td><a href= "{{route('cars.destroy', $car['id'])}}" onclick=" return confirm('Are you sure you want to delete?')">Delete</a></td>

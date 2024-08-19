@@ -5,6 +5,7 @@ use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 
@@ -168,7 +169,7 @@ Route::delete('delete', [classesController::class,'destroy'])->name('class.delet
 Route::patch('classes/{id}', [ClassesController::class, 'restore'])->name('class.restore');
 Route::delete('classes/{id}', [ClassesController::class, 'forcedelete'])->name('class.forcedelete');
 
-Route:: prefix('cars')->group(function(){
+Route:: prefix('cars')->middleware('verified')->group(function(){
 Route::get('', [CarController::class, 'index'])->name('cars.index');
 Route::get('create', [CarController::class, 'create'])->name('cars.create');
 Route::post('', [CarController::class, 'store'])->name('cars.store');
@@ -209,3 +210,11 @@ Route::get('/download', function (Illuminate\Http\Request $request) {
   //     abort(404, 'File not found');
   // }
 });
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/contact', function () {return view('contact');
+});
+
+Route::post('/contact', [App\Http\Controllers\HomeController::class, 'sendEmail'])->name('contact.send');

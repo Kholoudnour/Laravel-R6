@@ -30,24 +30,27 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Car Title:</label>
             <div class="col-md-10">
-              <input type="text" placeholder="classname" class="form-control py-2" name="carTitle" value="{{old('carTitle', $car->carTitle)}}"/>
+              <input type="text" placeholder="" class="form-control py-2" name="carTitle" value="{{old('carTitle', $car->carTitle)}}"/>
               @error ('carTitle')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
 
-            <div 
-            class="form-group">
-              <label for="category_id">Category</label>
-              <select
-              name="category_id" id="category_id" class="form-control">
-                  @foreach($categories as $category) 
-              <option value="{{ $category->id }}"  {{ $car->category_id == $category->id ? 'selected' : '' }}>
-                          {{ $category->name }}
-                      </option>
-                  @endforeach
+            <div class="form-group mb-3 row">
+            <label for="" class="form-label col-md-2 fw-bold text-md-end">Category:</label>
+            <div class="col-md-10">
+              <select name="category_id" id="" class="form-control">
+                <option value="">Select Category</option>
+              @foreach($categories as $category)
+               <option value="{{$category->id}}" @selected(old('category_id', $car->category_id) == $category->id)>{{$category->category_name}}</option>
+               {{ $category->category_name }}
+               @endforeach
               </select>
-    </div>
+              @error('category_id')
+                <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+            </div>
+          </div>
           </div>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Price:</label>

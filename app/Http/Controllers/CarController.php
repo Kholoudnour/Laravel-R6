@@ -72,8 +72,9 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        $car = Car::findOrFail($id);
-    
+        // $car = Car::findOrFail($id);
+        $car = Car::with('category')->findOrFail($id);
+        // dd($car);
         return  view('car_detail', compact('car'));
     }
 
@@ -111,7 +112,7 @@ class CarController extends Controller
          car::where('id', $id)->update($data);
       
 
-           return "Data Added Successfuly";
+           return "Data Updated Successfuly";
     // $data = [
         
     //         'cartitle' =>$request ->title, 
