@@ -87,3 +87,4 @@ Additional Notes:
 Middleware can be used for various purposes like authentication, logging, CORS handling, etc.
 You can pass parameters to middleware if needed, such as ->middleware('checkAge:21').
 By following these steps, you can effectively apply middleware in a Laravel application to manage and control access to various routes or functions.
+
