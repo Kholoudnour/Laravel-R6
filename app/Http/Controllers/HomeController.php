@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        session()->put('test', 'First Laravel session');
         return view('home');
     }
 

@@ -33,6 +33,8 @@ class CarController extends Controller
      */
     public function create()
     {
+
+        session()->put('test', 'First Laravel session');
         $categories = Category::select('id', 'category_name')->get();
         return view('add_car', compact('categories') );
     }
@@ -42,13 +44,23 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+       
         $data = $request -> validate([
             'carTitle' => 'required|string', 
             'description' => 'required|string|max:1000',
             'price' => 'required|numeric', 
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
             'category_id' => 'required|exists:categories,id',
-        
+            // $message=[
+            //     'carTitle.required'=>__('cars.carTitle'), 
+            // ]
+
+// $messages=[
+//     'carTitle.required'=> __('messages.titleRequired'),
+//      'price.string'=>__('messages.titleString'), 
+//      'description.required'=> __('messages.descRequired'),
+//     ]
+            
              ]);
         //      $file_extension = $request->image->getClientOriginalExtension();
         //      $file_name = time() . '.' . $file_extension;

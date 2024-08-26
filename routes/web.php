@@ -170,8 +170,8 @@ Route::patch('classes/{id}', [ClassesController::class, 'restore'])->name('class
 Route::delete('classes/{id}', [ClassesController::class, 'forcedelete'])->name('class.forcedelete');
 
 Route:: prefix('cars')->middleware('verified')->group(function(){
+// Route::get('create', [CarController::class, 'create'])->name('cars.create');
 Route::get('', [CarController::class, 'index'])->name('cars.index');
-Route::get('create', [CarController::class, 'create'])->name('cars.create');
 Route::post('', [CarController::class, 'store'])->name('cars.store');
 Route::get('{id}/edit', [CarController::class, 'edit'])->name('cars.edit');
 Route::post('', [CarController::class, 'store'])->name('cars.store');
@@ -182,10 +182,18 @@ Route::get('trashed', [CarController::class, 'showdeleted'])->name('cars.showdel
 
 Route::patch('{id}', [CarController::class, 'restore'])->name('cars.restore');
 Route::delete('{id}', [CarController::class, 'forcedelete'])->name('cars.forcedelete');
+});
+Route::group(
+  [
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+  ], function(){ 
+    Route::get('cars/create', [CarController::class, 'create'])->name('cars.create');
+  });
 
 // Route::resource('cars', CarController::class);
 
-});
+
 Route::get('uploadform', [ExampleController::class, 'uploadform']);
 Route::post('uploadform', [ExampleController::class, 'upload'])->name('uploadform');
 
