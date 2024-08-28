@@ -7,6 +7,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+
 use App\Models\Product;
 
 Route::get('/', function () {
