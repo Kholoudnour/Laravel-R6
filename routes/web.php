@@ -7,7 +7,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\SocialController;
 use App\Models\Product;
 
 Route::get('/', function () {
@@ -227,3 +227,5 @@ Route::get('/contact', function () {return view('contact');
 });
 
 Route::post('/contact', [App\Http\Controllers\HomeController::class, 'sendEmail'])->name('contact.send');
+Route::get('auth/github/redirect', [SocialController::class, 'redirect'])->name('socialLogin');
+Route::get('auth/github/callback', [SocialController::class, 'callback']);
